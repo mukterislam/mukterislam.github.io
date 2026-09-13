@@ -3,90 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mukter Islam | Android & App Developer</title>
+    <title>Mukter Islam | Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
+            --bg-color: #090d16;
+            --card-bg: rgba(30, 41, 59, 0.4);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --gradient-text: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
             --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
-            --accent-hover: #0284c7;
+            --text-sub: #94a3b8;
+            --accent-cyan: #38bdf8;
+            --accent-purple: #a855f7;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 20px;
+            padding: 20px 15px;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.15) 0%, transparent 45%);
+            background-attachment: fixed;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
         }
 
+        /* Profile Banner / Header */
         header {
             text-align: center;
-            padding: 60px 20px 40px;
+            padding: 50px 20px 30px;
+            position: relative;
+        }
+
+        .avatar-box {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3);
+            font-size: 2.2rem;
+            color: #fff;
         }
 
         header h1 {
-            font-size: 2.8rem;
-            color: var(--accent);
-            margin-bottom: 10px;
+            font-size: 2.6rem;
+            font-weight: 800;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
         header p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
+            font-size: 1.15rem;
+            color: var(--text-sub);
+            font-weight: 500;
         }
 
-        .section-title {
-            font-size: 1.8rem;
-            margin: 40px 0 20px;
-            border-bottom: 2px solid #334155;
-            padding-bottom: 10px;
+        .btn-group {
+            margin-top: 25px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 26px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5);
+        }
+
+        /* Section Headings */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 45px 0 25px;
+        }
+
+        .section-header i {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+        }
+
+        .section-header h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
             color: var(--text-main);
         }
 
+        /* Glassmorphism Cards */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
 
         .card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
             padding: 24px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            border: 1px solid #334155;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.15);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
         }
 
         .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            color: var(--accent);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 10px;
         }
 
         .card p {
-            color: var(--text-muted);
+            color: var(--text-sub);
             font-size: 0.95rem;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
+            line-height: 1.6;
         }
 
         .tags {
@@ -96,117 +201,151 @@
         }
 
         .tag {
-            background-color: #334155;
-            color: var(--accent);
-            padding: 4px 10px;
-            border-radius: 15px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 4px 12px;
+            border-radius: 30px;
             font-size: 0.8rem;
-            font-weight: bold;
+            font-weight: 600;
         }
 
-        .skills-list {
+        /* Skills Chips */
+        .skills-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
         }
 
-        .skill-btn {
-            background-color: var(--card-bg);
-            border: 1px solid var(--accent);
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
             color: var(--text-main);
-            padding: 8px 18px;
-            border-radius: 8px;
-            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
         }
 
+        .skill-card i {
+            color: var(--accent-purple);
+        }
+
+        /* Footer */
         footer {
             text-align: center;
             margin-top: 60px;
-            padding: 20px;
-            border-top: 1px solid #334155;
-            color: var(--text-muted);
+            padding: 30px 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-sub);
             font-size: 0.9rem;
         }
 
-        .contact-btn {
-            display: inline-block;
-            margin-top: 15px;
-            background-color: var(--accent);
-            color: #0f172a;
-            padding: 10px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-
-        .contact-btn:hover {
-            background-color: var(--accent-hover);
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.1rem;
+            }
+            .card {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Header Section -->
+        <!-- Profile Header -->
         <header>
+            <div class="avatar-box">
+                <i class="fa-solid fa-code"></i>
+            </div>
             <h1>মুক্তার ইসলাম</h1>
-            <p>Android & Mobile Application Developer</p>
-            <a href="https://github.com/mukterislam" class="contact-btn" target="_blank">আমার গিটহাব প্রোফাইল</a>
+            <p>Android App Developer & Software Creator</p>
+            <div class="btn-group">
+                <a href="https://github.com/mukterislam" target="_blank" class="btn btn-primary">
+                    <i class="fa-brands fa-github"></i> গিটহাব প্রোফাইল
+                </a>
+            </div>
         </header>
 
-        <!-- Skills Section -->
-        <h2 class="section-title">দক্ষতা ও টেকনোলজি Stack</h2>
-        <div class="skills-list">
-            <span class="skill-btn">Android Studio</span>
-            <span class="skill-btn">Java / Kotlin</span>
-            <span class="skill-btn">Sketchware Pro</span>
-            <span class="skill-btn">Firebase & REST API</span>
-            <span class="skill-btn">Media Processing</span>
-            <span class="skill-btn">Ngrok & Tunneling</span>
+        <!-- Tech Stack -->
+        <div class="section-header">
+            <i class="fa-solid fa-layer-group"></i>
+            <h2>দক্ষতা ও টেকনোলজি</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card"><i class="fa-brands fa-android"></i> Android Studio</div>
+            <div class="skill-card"><i class="fa-brands fa-java"></i> Java Architecture</div>
+            <div class="skill-card"><i class="fa-solid fa-mobile-retro"></i> Sketchware Pro</div>
+            <div class="skill-card"><i class="fa-solid fa-fire"></i> Firebase Integration</div>
+            <div class="skill-card"><i class="fa-solid fa-network-wired"></i> REST API & Tunneling</div>
+            <div class="skill-card"><i class="fa-solid fa-video"></i> Media Processing</div>
         </div>
 
-        <!-- Featured Projects Section -->
-        <h2 class="section-title">আমার প্রজেক্টসমূহ</h2>
+        <!-- App Portfolio -->
+        <div class="section-header">
+            <i class="fa-solid fa-rocket"></i>
+            <h2>আমার তৈরি প্রজেক্টসমূহ (All Apps)</h2>
+        </div>
         <div class="grid">
-            
-            <!-- Project 1: MkrPay -->
+
+            <!-- App 1: User & Admin App Ecosystem -->
             <div class="card">
-                <h3>MkrPay App</h3>
-                <p>একটি সম্পূর্ণ ব্যবসায়িক লেনদেনের হিসাব রাখার এবং কাস্টমার ম্যানেজমেন্ট অ্যাপ্লিকেশন। ড্যাশবোর্ড, কাস্টমার এন্ট্রি ও ইনস্ট্যান্ট ট্রানজেকশন ফিচারে সমৃদ্ধ।</p>
+                <div class="card-icon"><i class="fa-solid fa-users-gear"></i></div>
+                <h3>User & Admin Ecosystem App</h3>
+                <p>একটি সম্পূর্ণ ক্লায়েন্ট ও অ্যাডমিন কন্ট্রোল সিস্টেম। অ্যাডমিন ব্যাকএন্ড থেকে সরাসরি নোটিফিকেশন ডেলিভারি, ইউজার ডাটা কন্ট্রোল এবং পূর্ণাঙ্গ রিয়েল-টাইম সিস্টেম নোটিফিকেশন ম্যানেজমেন্ট ফিচারে সমৃদ্ধ।</p>
                 <div class="tags">
-                    <span class="tag">Android</span>
+                    <span class="tag">Sketchware Pro</span>
                     <span class="tag">Java</span>
+                    <span class="tag">Push Notifications</span>
+                </div>
+            </div>
+
+            <!-- App 2: MkrPay -->
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-wallet"></i></div>
+                <h3>MkrPay Financial App</h3>
+                <p>ব্যবসায়িক ড্যাশবোর্ড, কাস্টমার ম্যানেজমেন্ট, দ্রুত লেনদেন এন্ট্রি ও ইনস্ট্যান্ট হিসেব ক্যালকুলেশনের সুবিধা সংবলিত কাস্টম ক্যাশ হিসাবরক্ষণ অ্যান্ড্রয়েড অ্যাপ্লিকেশন।</p>
+                <div class="tags">
+                    <span class="tag">Android Studio</span>
+                    <span class="tag">Java UI/UX</span>
                     <span class="tag">FinTech</span>
                 </div>
             </div>
 
-            <!-- Project 2: Ngrok Tunneling App -->
+            <!-- App 3: Ngrok Tunneling Utility -->
             <div class="card">
-                <h3>Ngrok Tunneling Solution</h3>
-                <p>লোকাল হোস্ট সার্ভারকে নিরাপদে ইন্টারনেটে অ্যাক্সেসযোগ্য করার জন্য Ngrok ভিত্তিক অ্যান্ডয়েড টানেলিং ইউটিলিটি টুল।</p>
+                <div class="card-icon"><i class="fa-solid fa-network-wired"></i></div>
+                <h3>Ngrok Tunneling App</h3>
+                <p>মোবাইল ডিভাইস থেকে লোকালহোস্ট সার্ভারকে সরাসরি পাবলিসিটি ও ইন্টারনেটে সুরক্ষিতভাবে অ্যাক্সেস করার সুবিধা সংবলিত অ্যাডভান্সড নেটওয়ার্কিং ইউটিলিটি টুল।</p>
                 <div class="tags">
-                    <span class="tag">Networking</span>
                     <span class="tag">Ngrok API</span>
-                    <span class="tag">Utility</span>
+                    <span class="tag">Network Tools</span>
+                    <span class="tag">Utilities</span>
                 </div>
             </div>
 
-            <!-- Project 3: Video Processing App -->
+            <!-- App 4: Video Processing & Mirroring Tool -->
             <div class="card">
-                <h3>Video Mirroring & Tool</h3>
-                <p>ভিডিও কনটেন্ট এডিটিং, ভিডিও মিররিং বা রোটেশনের মতো কাস্টম ফিচার সংবলিত একটি মাল্টিমিডিয়া ইউটিলিটি অ্যান্ডয়েড অ্যাপ।</p>
+                <div class="card-icon"><i class="fa-solid fa-photo-film"></i></div>
+                <h3>Video Mirroring & Media Editor</h3>
+                <p>ভিডিওর ওরিয়েন্টেশন পরিবর্তন, কাস্টম ভিডিও রোটেশন এবং ভিডিও ক্রপিং ও মিররিং প্রসেসিং করার জন্য বিশেষায়িত একটি মিডিয়া টুল অ্যাপ।</p>
                 <div class="tags">
-                    <span class="tag">Media Processing</span>
-                    <span class="tag">Android App</span>
+                    <span class="tag">Media Engine</span>
+                    <span class="tag">Video Editing</span>
+                    <span class="tag">Android Utility</span>
                 </div>
             </div>
 
         </div>
 
-        <!-- Footer Section -->
+        <!-- Footer -->
         <footer>
-            <p>© 2026 Mukter Islam. Hosted on GitHub Pages.</p>
+            <p>© 2026 Mukter Islam. Developed with passion & hosted on GitHub Pages.</p>
         </footer>
     </div>
 
