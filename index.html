@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mukter Islam | Android & App Developer</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #334155;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.15);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background-color: #334155;
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--accent);
+            color: var(--text-main);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            border-top: 1px solid #334155;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: var(--accent);
+            color: #0f172a;
+            padding: 10px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--accent-hover);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>মুক্তার ইসলাম</h1>
+            <p>Android & Mobile Application Developer</p>
+            <a href="https://github.com/mukterislam" class="contact-btn" target="_blank">আমার গিটহাব প্রোফাইল</a>
+        </header>
+
+        <!-- Skills Section -->
+        <h2 class="section-title">দক্ষতা ও টেকনোলজি Stack</h2>
+        <div class="skills-list">
+            <span class="skill-btn">Android Studio</span>
+            <span class="skill-btn">Java / Kotlin</span>
+            <span class="skill-btn">Sketchware Pro</span>
+            <span class="skill-btn">Firebase & REST API</span>
+            <span class="skill-btn">Media Processing</span>
+            <span class="skill-btn">Ngrok & Tunneling</span>
+        </div>
+
+        <!-- Featured Projects Section -->
+        <h2 class="section-title">আমার প্রজেক্টসমূহ</h2>
+        <div class="grid">
+            
+            <!-- Project 1: MkrPay -->
+            <div class="card">
+                <h3>MkrPay App</h3>
+                <p>একটি সম্পূর্ণ ব্যবসায়িক লেনদেনের হিসাব রাখার এবং কাস্টমার ম্যানেজমেন্ট অ্যাপ্লিকেশন। ড্যাশবোর্ড, কাস্টমার এন্ট্রি ও ইনস্ট্যান্ট ট্রানজেকশন ফিচারে সমৃদ্ধ।</p>
+                <div class="tags">
+                    <span class="tag">Android</span>
+                    <span class="tag">Java</span>
+                    <span class="tag">FinTech</span>
+                </div>
+            </div>
+
+            <!-- Project 2: Ngrok Tunneling App -->
+            <div class="card">
+                <h3>Ngrok Tunneling Solution</h3>
+                <p>লোকাল হোস্ট সার্ভারকে নিরাপদে ইন্টারনেটে অ্যাক্সেসযোগ্য করার জন্য Ngrok ভিত্তিক অ্যান্ডয়েড টানেলিং ইউটিলিটি টুল।</p>
+                <div class="tags">
+                    <span class="tag">Networking</span>
+                    <span class="tag">Ngrok API</span>
+                    <span class="tag">Utility</span>
+                </div>
+            </div>
+
+            <!-- Project 3: Video Processing App -->
+            <div class="card">
+                <h3>Video Mirroring & Tool</h3>
+                <p>ভিডিও কনটেন্ট এডিটিং, ভিডিও মিররিং বা রোটেশনের মতো কাস্টম ফিচার সংবলিত একটি মাল্টিমিডিয়া ইউটিলিটি অ্যান্ডয়েড অ্যাপ।</p>
+                <div class="tags">
+                    <span class="tag">Media Processing</span>
+                    <span class="tag">Android App</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>© 2026 Mukter Islam. Hosted on GitHub Pages.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
