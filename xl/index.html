@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+    <title>XLSX Auto Fit Viewer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #111;
+        }
+
+        /* আপলোড স্ক্রিন */
+        #welcomeScreen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 85vh;
+            padding: 20px;
+        }
+
+        .upload-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 340px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 2px dashed #107c41;
+        }
+
+        .file-btn {
+            background-color: #107c41;
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        /* ভিউয়ার স্ক্রিন */
+        #viewerScreen {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        /* টপ হেডার বার */
+        .top-bar {
+            height: 42px;
+            background-color: #107c41;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 13px;
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            width: 100%;
+        }
+
+        .file-title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 65%;
+            font-weight: 500;
+        }
+
+        .reload-btn {
+            background: rgba(255,255,255,0.25);
+            border: none;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        /* টেবিল কন্টেইনার - ১০০% স্ক্রিন জুড়ে ফিট */
+        #tableContainer {
+            width: 100%;
+            overflow-x: hidden; /* ডানে বাড়তি স্ক্রল থাকবে না */
+            background-color: #ffffff;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100% !important;
+            table-layout: fixed; /* কলামগুলোকে পুরো স্ক্রিনের মধ্যে আটোসাটো করে ফিট রাখবে */
+            font-size: 8.5px; /* একদম পারফেক্ট সাইজ */
+            letter-spacing: -0.2px;
+        }
+
+        th, td {
+            border: 0.5px solid #dcdcdc;
+            padding: 3px 2px; /* ন্যূনতম প্যাডিং */
+            text-align: center;
+            vertical-align: middle;
+            word-break: break-word; /* লম্বা শব্দ ভেঙে নিচে নেমে স্ক্রিন রক্ষা করবে */
+            overflow: hidden;
+        }
+
+        /* হেডার ডিজাইন */
+        thead th, tr:first-child td {
+            background-color: #e2efda;
+            color: #0d4a22;
+            font-weight: bold;
+            position: sticky;
+            top: 42px;
+            z-index: 10;
+            line-height: 1.1;
+            padding: 4px 2px;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f8e9;
+        }
+
+        /* বটম স্ট্যাটাস বার */
+        .bottom-bar {
+            height: 26px;
+            background-color: #f4f4f4;
+            border-top: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 11px;
+            color: #555;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+            z-index: 30;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- আপলোড স্ক্রিন -->
+    <div id="welcomeScreen">
+        <div class="upload-card">
+            <h3 style="color:#107c41;">XLSX ফাইল ভিউয়ার</h3>
+            <label for="fileInput" class="file-btn">ফাইল নির্বাচন করুন</label>
+            <input type="file" id="fileInput" accept=".xlsx, .xls" />
+        </div>
+    </div>
+
+    <!-- মূল ভিউয়ার স্ক্রিন -->
+    <div id="viewerScreen">
+        <header class="top-bar">
+            <span class="file-title" id="fileNameText">Document.xlsx</span>
+            <button class="reload-btn" onclick="openFilePicker()">নতুন ফাইল</button>
+        </header>
+
+        <div id="tableContainer"></div>
+
+        <footer class="bottom-bar">
+            <span id="sheetNameText">Sheet1</span>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const viewerScreen = document.getElementById('viewerScreen');
+        const tableContainer = document.getElementById('tableContainer');
+        const fileNameText = document.getElementById('fileNameText');
+        const sheetNameText = document.getElementById('sheetNameText');
+
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            fileNameText.textContent = file.name;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const firstSheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[firstSheetName];
+
+                    sheetNameText.textContent = firstSheetName;
+                    
+                    // টেবিল তৈরি
+                    tableContainer.innerHTML = XLSX.utils.sheet_to_html(worksheet);
+
+                    // অপ্রয়োজনীয় সম্পূর্ণ খালি কলাম থাকলে সেগুলো বাদ দেওয়া
+                    cleanEmptyColumns();
+
+                    welcomeScreen.style.display = 'none';
+                    viewerScreen.style.display = 'flex';
+
+                } catch (err) {
+                    alert("ফাইলটি প্রসেস করা সম্ভব হচ্ছে না!");
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        });
+
+        // খালি কলাম পরিষ্কার করার ফাংশন (যাতে সব প্রয়োজনীয় কলাম আরও জায়গা পায়)
+        function cleanEmptyColumns() {
+            const table = tableContainer.querySelector('table');
+            if (!table) return;
+
+            const rows = Array.from(table.querySelectorAll('tr'));
+            if (rows.length === 0) return;
+
+            const colCount = rows[0].children.length;
+            const emptyCols = [];
+
+            for (let c = colCount - 1; c >= 0; c--) {
+                let hasData = false;
+                for (let r = 1; r < rows.length; r++) { // প্রথম রো (হেডার) বাদে বাকিগুলোতে ডেটা আছে কিনা দেখা
+                    const cell = rows[r].children[c];
+                    if (cell && cell.textContent.trim() !== '') {
+                        hasData = true;
+                        break;
+                    }
+                }
+                // যদি পুরো কলামের কোথাও কোনো ডেটা না থাকে
+                if (!hasData) {
+                    emptyCols.push(c);
+                }
+            }
+
+            // ফাঁকা কলামগুলো টেবিল থেকে ডিলিট করে মূল কলামগুলোকে ছড়িয়ে দেওয়া
+            emptyCols.forEach(colIndex => {
+                rows.forEach(row => {
+                    if (row.children[colIndex]) {
+                        row.removeChild(row.children[colIndex]);
+                    }
+                });
+            });
+        }
+
+        function openFilePicker() {
+            fileInput.value = '';
+            welcomeScreen.style.display = 'flex';
+            viewerScreen.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
