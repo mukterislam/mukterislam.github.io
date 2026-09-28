@@ -3,7 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Md. Mukter Islam | Mid-Level Developer Portfolio</title>
+
+  <!-- ==================== ADVANCED SEO META TAGS ==================== -->
+  <title>Md. Mukter Islam | Mid-Level Web & Android App Developer</title>
+  <meta name="description" content="Portfolio of Md. Mukter Islam, an experienced Mid-Level Web Developer and Android App Specialist from Atrai, Naogaon, Bangladesh with expertise in Graphic Design and Programming." />
+  <meta name="keywords" content="Md Mukter Islam, Mukter Islam, Mid-Level Developer, Web Developer Bangladesh, Android App Developer, Graphic Designer Naogaon, Full Stack Developer" />
+  <meta name="author" content="Md. Mukter Islam" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://mukterislam.github.io/" />
+
+  <!-- Open Graph (Facebook, LinkedIn Preview) -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Md. Mukter Islam | Mid-Level Developer Portfolio" />
+  <meta property="og:description" content="Experienced Mid-Level Developer specializing in modern Web Development, Android Applications, and Graphic Design." />
+  <meta property="og:url" content="https://mukterislam.github.io/" />
+  <meta property="og:image" content="https://mukterislam.github.io/profile.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Md. Mukter Islam | Developer Portfolio" />
+  <meta name="twitter:description" content="Explore the portfolio and skills of Md. Mukter Islam (Web & Android Developer)." />
+  <meta name="twitter:image" content="https://mukterislam.github.io/profile.png" />
+
+  <!-- Structured Data (JSON-LD / Schema.org) for Google Knowledge Graph -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Md. Mukter Islam",
+    "jobTitle": "Mid-Level Software Developer",
+    "telephone": "+8801781361207",
+    "email": "mdmukterislam86@gmail.com",
+    "url": "https://mukterislam.github.io/",
+    "image": "https://mukterislam.github.io/profile.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Par Panchupur, Atrai",
+      "addressRegion": "Naogaon",
+      "addressCountry": "Bangladesh"
+    },
+    "knowsAbout": [
+      "Web Development",
+      "Android App Development",
+      "Programming",
+      "Graphic Design",
+      "Front-End and Back-End Architecture"
+    ]
+  }
+  </script>
+  <!-- ==================== END SEO TAGS ==================== -->
+
   <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -238,7 +287,7 @@
       margin-bottom: 0.75rem;
     }
 
-    .skill-card h4 {
+    .skill-card h3 {
       font-size: 1.1rem;
       margin-bottom: 0.25rem;
     }
@@ -292,85 +341,87 @@
     <!-- Navbar -->
     <nav>
       <div class="logo">Mukter.dev</div>
-      <button class="theme-toggle" id="themeToggle">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark and Light Mode">
         <i class="fa-solid fa-moon"></i> <span>Dark Mode</span>
       </button>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-content">
-        <span class="badge">🚀 Mid-Level Developer</span>
-        <h1 class="hero-title">Hello, I'm <br><span>Md. Mukter Islam</span></h1>
-        <p class="hero-desc">
-          Experienced Mid-Level Developer with over 2+ years of professional experience specializing in modern Web Development, Android Applications, and Graphic Design.
-        </p>
-        
-        <div class="contact-chips">
-          <a href="tel:01781361207" class="chip"><i class="fa-solid fa-phone"></i> +880 1781-361207</a>
-          <a href="mailto:mdmukterislam86@gmail.com" class="chip"><i class="fa-solid fa-envelope"></i> mdmukterislam86@gmail.com</a>
-          <div class="chip"><i class="fa-solid fa-location-dot"></i> Par Panchupur, Atrai, Naogaon</div>
+    <!-- Main Profile / Hero Section -->
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <span class="badge">🚀 Mid-Level Developer</span>
+          <h1 class="hero-title">Hello, I'm <br><span>Md. Mukter Islam</span></h1>
+          <p class="hero-desc">
+            Experienced Mid-Level Developer with over 2+ years of professional experience specializing in modern Web Development, Android Applications, and Graphic Design.
+          </p>
+          
+          <div class="contact-chips">
+            <a href="tel:01781361207" class="chip" title="Call Md. Mukter Islam"><i class="fa-solid fa-phone"></i> +880 1781-361207</a>
+            <a href="mailto:mdmukterislam86@gmail.com" class="chip" title="Email Md. Mukter Islam"><i class="fa-solid fa-envelope"></i> mdmukterislam86@gmail.com</a>
+            <div class="chip" title="Location"><i class="fa-solid fa-location-dot"></i> Par Panchupur, Atrai, Naogaon</div>
+          </div>
+
+          <a href="mailto:mdmukterislam86@gmail.com" class="btn"><i class="fa-solid fa-paper-plane"></i> Get in Touch</a>
         </div>
 
-        <a href="mailto:mdmukterislam86@gmail.com" class="btn"><i class="fa-solid fa-paper-plane"></i> Get in Touch</a>
-      </div>
+        <div class="hero-image-wrapper">
+          <img src="profile.png" alt="Md. Mukter Islam - Mid-Level Developer" class="profile-img" onerror="this.src='https://via.placeholder.com/230?text=Profile+Photo'" />
+        </div>
+      </section>
 
-      <div class="hero-image-wrapper">
-        <img src="profile.png" alt="Md. Mukter Islam" class="profile-img" onerror="this.src='https://via.placeholder.com/230?text=Profile+Photo'" />
-      </div>
-    </section>
+      <!-- Experience Section -->
+      <section>
+        <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Work Experience</h2>
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+            <h3 style="font-size: 1.25rem;">Mid-Level Developer</h3>
+            <span style="color: var(--accent); font-weight: 600; font-size: 0.9rem;">2+ Years Experience (Ongoing)</span>
+          </div>
+          <p style="color: var(--text-muted); margin-top: 0.75rem;">
+            Specialized in creating robust software solutions, maintaining modern web portals, building user-friendly Android apps, and crafting cohesive visual assets.
+          </p>
+        </div>
+      </section>
 
-    <!-- Experience Section -->
-    <section>
-      <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Work Experience</h2>
-      <div class="card">
-        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
-          <h3 style="font-size: 1.25rem;">Mid-Level Developer</h3>
-          <span style="color: var(--accent); font-weight: 600; font-size: 0.9rem;">2+ Years Experience (Ongoing)</span>
+      <!-- Skills Section -->
+      <section>
+        <h2 class="section-title"><i class="fa-solid fa-code"></i> Core Expertise</h2>
+        <div class="skills-grid">
+          <article class="skill-card">
+            <i class="fa-solid fa-laptop-code"></i>
+            <h3>Web Development</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Responsive Front-End & Back-End</p>
+          </article>
+          <article class="skill-card">
+            <i class="fa-brands fa-android"></i>
+            <h3>Android Development</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Mobile Apps & Architecture</p>
+          </article>
+          <article class="skill-card">
+            <i class="fa-solid fa-terminal"></i>
+            <h3>Programming</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Clean & Scalable Code</p>
+          </article>
+          <article class="skill-card">
+            <i class="fa-solid fa-pen-nib"></i>
+            <h3>Graphic Design</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">UI Elements & Visuals</p>
+          </article>
         </div>
-        <p style="color: var(--text-muted); margin-top: 0.75rem;">
-          Specialized in creating robust software solutions, maintaining modern web portals, building user-friendly Android apps, and crafting cohesive visual assets.
-        </p>
-      </div>
-    </section>
+      </section>
 
-    <!-- Skills Section -->
-    <section>
-      <h2 class="section-title"><i class="fa-solid fa-code"></i> Core Expertise</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <i class="fa-solid fa-laptop-code"></i>
-          <h4>Web Development</h4>
-          <p style="color: var(--text-muted); font-size: 0.85rem;">Responsive Front-End & Back-End</p>
+      <!-- Languages Section -->
+      <section>
+        <h2 class="section-title"><i class="fa-solid fa-language"></i> Languages</h2>
+        <div class="tags">
+          <span class="tag">Bengali (Native)</span>
+          <span class="tag">English</span>
+          <span class="tag">Hindi</span>
+          <span class="tag">Urdu</span>
         </div>
-        <div class="skill-card">
-          <i class="fa-brands fa-android"></i>
-          <h4>Android Development</h4>
-          <p style="color: var(--text-muted); font-size: 0.85rem;">Mobile Apps & Architecture</p>
-        </div>
-        <div class="skill-card">
-          <i class="fa-solid fa-terminal"></i>
-          <h4>Programming</h4>
-          <p style="color: var(--text-muted); font-size: 0.85rem;">Clean & Scalable Code</p>
-        </div>
-        <div class="skill-card">
-          <i class="fa-solid fa-pen-nib"></i>
-          <h4>Graphic Design</h4>
-          <p style="color: var(--text-muted); font-size: 0.85rem;">UI Elements & Visuals</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Languages Section -->
-    <section>
-      <h2 class="section-title"><i class="fa-solid fa-language"></i> Languages</h2>
-      <div class="tags">
-        <span class="tag">Bengali (Native)</span>
-        <span class="tag">English</span>
-        <span class="tag">Hindi</span>
-        <span class="tag">Urdu</span>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -380,10 +431,8 @@
 
   <!-- JavaScript -->
   <script>
-    // ডাইনামিক সাল সেট করা
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // থিম টগল কন্ট্রোল
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = themeToggle.querySelector('i');
     const themeText = themeToggle.querySelector('span');
